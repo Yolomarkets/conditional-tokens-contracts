@@ -8,6 +8,7 @@
     "compile": "truffle compile",
     "migrate": "truffle migrate",
     "networks": "truffle networks",
+    "verify:base": "node scripts/verify-basescan.js",
     "test": "truffle test",
     "lint-contracts": "solium -d contracts/",
     "injectnetinfo": "tnt iN",
@@ -28,6 +29,7 @@
     "openzeppelin-solidity": "2.3.0"
   },
   "devDependencies": {
+    "@truffle/hdwallet-provider": "^2.1.15",
     "@codechecks/client": "^0.1.9",
     "@gnosis.pm/safe-contracts": "github:gnosis/safe-contracts",
     "@gnosis.pm/truffle-nice-tools": "^1.1.3",
