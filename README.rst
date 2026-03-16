@@ -1,26 +1,80 @@
-Conditional Tokens Contracts
-============================
+YOLO Markets Conditional Tokens Contracts
+=========================================
 
-.. image:: https://travis-ci.org/gnosis/conditional-tokens-contracts.svg?branch=master
-   :target: https://travis-ci.org/gnosis/conditional-tokens-contracts
-   :alt: Build Status
+This repository is the YOLO Markets fork of Gnosis Conditional Tokens.
 
-.. image:: https://badges.greenkeeper.io/gnosis/conditional-tokens-contracts.svg
-   :target: https://greenkeeper.io/
-   :alt: Greenkeeper badge
+We use these contracts as the onchain position layer for fully collateralized
+conditional markets on Base. The core contract exposes the standard conditional
+tokens lifecycle:
 
-Smart contracts for conditional tokens.
+* ``prepareCondition``
+* ``splitPosition``
+* ``mergePositions``
+* ``reportPayouts``
+* ``redeemPositions``
+
+The main contract lives in ``contracts/ConditionalTokens.sol`` and is deployed
+for YOLO Markets on Base mainnet.
+
+Deployment
+----------
+
+Base mainnet deployment:
+
+* ``0xF86c1f1c6F397B9DAE7967a139AE77C4519511EC``
+
+Verified source:
+
+* https://basescan.org/address/0xF86c1f1c6F397B9DAE7967a139AE77C4519511EC#code
+
+Development
+-----------
+
+Install dependencies::
+
+   yarn install
+
+Compile contracts::
+
+   yarn compile
+
+Run tests::
+
+   yarn test
+
+Show deployed networks recorded in Truffle artifacts::
+
+   yarn networks
+
+Deploy locally against a node on ``localhost:8545``::
+
+   yarn migrate --network local
+
+Deploy to Base mainnet::
+
+   export BASE_RPC_URL="https://mainnet.base.org"
+   export BASE_PRIVATE_KEY="0x..."
+   export BASE_GAS_PRICE_WEI=6000000
+   export BASE_GAS_LIMIT=8000000
+   yarn migrate --network base --f 2 --to 2 --reset
+
+Verification
+------------
+
+This repo includes a BaseScan verification helper script::
+
+   export BASESCAN_API_KEY="..."
+   yarn verify:base --address 0xF86c1f1c6F397B9DAE7967a139AE77C4519511EC
+
+Reference Documentation
+-----------------------
+
+The upstream Gnosis documentation is still useful for understanding the core
+CTF model and contract semantics:
 
 `→ Online Documentation`_
 
 .. _→ Online Documentation: https://docs.gnosis.io/conditionaltokens/
-
-The conditional tokens contracts are deployed at the following addresses:
-
-* Mainnet: ``0xC59b0e4De5F1248C1140964E0fF287B192407E0C``
-* Base: ``0xF86c1f1c6F397B9DAE7967a139AE77C4519511EC``
-* xDai: ``0xCeAfDD6bc0bEF976fdCd1112955828E00543c0Ce``
-* Rinkeby: ``0x36bede640D19981A82090519bC1626249984c908``
 
 
 License
